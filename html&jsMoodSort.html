@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to bring up dialog box for tweet.</p>
+
+<button onclick="myFunction()">Press me</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var tweet = prompt("Please enter your tweet", " ");
+    if (tweet != null) {
+	
+		var tweetArr = tweet.split(" ");
+	
+		//Dictionary declarations
+		var anger = ["anger", "mad", "disgusted"];
+		var happy = ["happy", "joyful", "delighted"];
+		var love = ["love", "endearing", "heartfelt"];
+		var fear = ["fear", "afraid", "scared"];
+		var surprise = ["surprise", "wow", "shocked"];
+		var sadness = ["sadness", "unhappy", "depressed"];	
+	
+		var finalMood = "null"; //assigning a final mood string
+		
+		//these counts will help determine what mood a string represents
+		var angerCount = 0;
+		var happyCount = 0;
+		var loveCount = 0;
+		var fearCount = 0;
+		var surpriseCount = 0;
+		var sadnessCount = 0;	
+		
+	
+		//checking input string for anger keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(anger[0])) {
+				angerCount++;
+				document.write("did contain anger" + "<br>");
+			}
+			else if(tweetArr[i].includes(anger[1])) {
+				angerCount++;
+				document.write("did contain anger" + "<br>");
+			}
+			else if(tweetArr[i].includes(anger[2])) {
+				angerCount++;
+				document.write("did contain anger" + "<br>");
+			}
+			else {
+				document.write("didn't contain anger" + "<br>");
+			}
+		};
+		
+		//checking input string for happy keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(happy[0])) {
+				happyCount++;
+				document.write("did contain happy" + "<br>");
+			}
+			else if(tweetArr[i].includes(happy[1])) {
+				happyCount++;
+				document.write("did contain happy" + "<br>");
+			}
+			else if(tweetArr[i].includes(happy[2])) {
+				happyCount++;
+				document.write("did contain happy" + "<br>");
+			}
+			else {
+				document.write("didn't contain happy" + "<br>");
+			}
+		};
+		
+		
+		//checking input string for love keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(love[0])) {
+				loveCount++;
+				document.write("did contain love" + "<br>");
+			}
+			else if(tweetArr[i].includes(love[1])) {
+				loveCount++;
+				document.write("did contain love" + "<br>");
+			}
+			else if(tweetArr[i].includes(love[2])) {
+				loveCount++;
+				document.write("did contain love" + "<br>");
+			}
+			else {
+				document.write("didn't contain love" + "<br>");
+			}
+		};
+		
+		//checking input string for fear keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(fear[0])) {
+				fearCount++;
+				document.write("did contain fear" + "<br>");
+			}
+			else if(tweetArr[i].includes(fear[1])) {
+				fearCount++;
+				document.write("did contain fear" + "<br>");
+			}
+			else if(tweetArr[i].includes(fear[2])) {
+				fearCount++;
+				document.write("did contain fear" + "<br>");
+			}
+			else {
+				document.write("didn't contain fear" + "<br>");
+			}
+		};
+		
+		//checking input string for surprise keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(surprise[0])) {
+				surpriseCount++;
+				document.write("did contain surprise" + "<br>");
+			}
+			else if(tweetArr[i].includes(surprise[1])) {
+				surpriseCount++;
+				document.write("did contain surprise" + "<br>");
+			}
+			else if(tweetArr[i].includes(surprise[2])) {
+				surpriseCount++;
+				document.write("did contain surprise" + "<br>");
+			}
+			else {
+				document.write("didn't contain surprise" + "<br>");
+			}
+		};
+		
+		
+		//checking input string for sadness keywords
+		for(i = 0; i < tweetArr.length; i++) {
+			if(tweetArr[i].includes(sadness[0])) {
+				sadnessCount++;
+				document.write("did contain sadness" + "<br>");
+			}
+			else if(tweetArr[i].includes(sadness[1])) {
+				sadnessCount++;
+				document.write("did contain sadness" + "<br>");
+			}
+			else if(tweetArr[i].includes(sadness[2])) {
+				sadnessCount++;
+				document.write("did contain sadness" + "<br>");
+			}
+			else {
+				document.write("didn't contain sadness" + "<br>");
+			}
+		};
+		
+		//if anger is the highest count, the final mood of the tweet is anger
+		if(angerCount > happyCount && angerCount > loveCount && angerCount > fearCount && angerCount > surpriseCount && angerCount > sadnessCount) {
+			finalMood = "anger";
+		}
+		//if happy is the highest count, the final mood of the tweet is happy
+		else if (happyCount > angerCount && happyCount > loveCount && happyCount > fearCount && happyCount > surpriseCount && happyCount > sadnessCount) {
+			finalMood = "happy";
+		}
+		//if love is the highest count, the final mood of the tweet is love
+		else if (loveCount > angerCount && loveCount > happyCount && loveCount > fearCount && loveCount > surpriseCount && loveCount > sadnessCount) {
+			finalMood = "love";
+		}
+		//if fear is the highest count, the final mood of the tweet is fear
+		else if (fearCount > angerCount && fearCount > happyCount && fearCount > loveCount && fearCount > surpriseCount && fearCount > sadnessCount) {
+			finalMood = "fear";
+		}
+		//if surprise is the highest count, the final mood of the tweet is surprise
+		else if (surpriseCount > angerCount && surpriseCount > happyCount && surpriseCount > loveCount && surpriseCount > fearCount && surpriseCount > sadnessCount) {
+			finalMood = "surprise";
+		}
+		//if sadness is the highest count, the final mood of the tweet is sadness
+		else if (sadnessCount > angerCount && sadnessCount > happyCount && sadnessCount > loveCount && sadnessCount > fearCount && sadnessCount > surpriseCount) {
+			finalMood = "sadness";
+		}
+		//if there's a tie anywhere
+		else {
+			finalMood = "ambiguous";
+		}
+		
+		
+		
+		
+		document.write("The anger count is: " + angerCount + "<br>");
+		document.write("The happy count is: " + happyCount + "<br>");
+		document.write("The love count is: " + loveCount + "<br>");
+		document.write("The fear count is: " + fearCount + "<br>");
+		document.write("The suprise count is: " + surpriseCount + "<br>");
+		document.write("The sadness count is: " + sadnessCount + "<br>");
+
+		document.write(tweetArr) + "<br>";
+		document.write("The final mood is: " + finalMood);
+		
+    }
+	
+}
+</script>
+
+</body>
+</html>
