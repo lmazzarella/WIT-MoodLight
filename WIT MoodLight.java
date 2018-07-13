@@ -16,16 +16,18 @@ import java.io.InputStreamReader;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
 class WITMoodLight {
 	
-	public boolean anger(String tweet){}
+	/*public boolean anger(String tweet){}
 	public boolean happy(String tweet){}
 	public boolean sadness(String tweet){}
 	public boolean love(String tweet){}
-	public boolean surprise(String tweet){}
+	public boolean surprise(String tweet){}*/
     public static void main(String[] args) throws IOException {
 
 
@@ -102,10 +104,9 @@ class WITMoodLight {
 			System.out.println("Showing home time line.");
 			for (Status status : statuses) {
 				String statusText = status.getText();
-				System.out.println(status.getUser().getName() + ":" +
-								   statusText);
+				System.out.println(status.getUser().getName() + ":" + statusText);
 
-				String[] tweetArr = status.split(" "); //takes tweet and splits into array of words separated with a space
+				String[] tweetArr = statusText.split(" "); //takes tweet and splits into array of words separated with a space
 				//these counts will help determine what mood a string represents
 				int angerCount = 0;
 				int happyCount = 0;
@@ -196,21 +197,21 @@ class WITMoodLight {
 					}
 				};
 				
-				HashMap<String, Integer> emotions = new HashMap<String,Integer>();
+				HashMap<String, Integer> emotions = new HashMap<String, Integer>();
 
 				// Inserting a variable
-				vars.put("anger", angerCount);
-				vars.put("happy", happyCount);
-				vars.put("sadness", sadnessCount);
-				vars.put("love", loveCount);
-				vars.put("surprise", surpriseCount);
+				emotions.put("anger", angerCount);
+				emotions.put("happy", happyCount);
+				emotions.put("sadness", sadnessCount);
+				emotions.put("love", loveCount);
+				emotions.put("surprise", surpriseCount);
 
 				// Looking for biggest variable
-				Int biggestVal = 0;
+				int biggestVal = 0;
 				String biggestKey = "";
-				for (Map.Entry<String, Object> entry : emotions.entrySet()) {
+				for (HashMap.Entry<String, Integer> entry : emotions.entrySet()) {
 					String key = entry.getKey();
-					Object val = entry.getValue();
+					int val = entry.getValue();
 					if (val > biggestVal){
 						biggestVal = val;
 						biggestKey = key;
@@ -232,16 +233,12 @@ class WITMoodLight {
 					continue;
 				}
 			
-			} 
+			}; 
 			
-			catch (Exception e) {
-				System.err.println("ERROR: " + e.getMessage());
-			//		e.printStackTrace();
-				return;
-			}
+			
 
 
-			HashMap<String, Integer> vars = new HashMap<String,Integer>();
+			HashMap<String, Integer> vars = new HashMap<String, Integer>();
 
 			// Inserting a variable
 			vars.put("anger", final_angerCount);
@@ -251,21 +248,25 @@ class WITMoodLight {
 			vars.put("surprise", final_surpriseCount);
 
 			// Looking for biggest variable
-			Int biggestVal = 0;
+			int biggestVal = 0;
 			String biggestKey = "";
-			for (Map.Entry<String, Object> entry : vars.entrySet()) {
+			for (Map.Entry<String, Integer> entry : vars.entrySet()) {
 				String key = entry.getKey();
-				Object val = entry.getValue();
+				int val = entry.getValue();
 				if (val > biggestVal){
 					biggestVal = val;
 					biggestKey = key;
 				}
-			}
+			};
 			
 			
 			System.out.println("Highest emotion is " + biggestKey);
 			System.exit(0);
 
+		} catch (Exception e) {
+			System.err.println("ERROR: " + e.getMessage());
+		//		e.printStackTrace();
+			System.exit(0);
 		}
 	}
 }
