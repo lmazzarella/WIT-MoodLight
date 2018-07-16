@@ -33,15 +33,11 @@ class WITMoodLight {
 
 
 	/* Info from Twitter:
-
 		OAuth settings
 		Your application's OAuth settings. Keep the "Consumer secret" a secret. 
 		This key should never be human-readable in your application.
-
 		via: https://dev.twitter.com/apps/new
-
 		Access level Read and write 
-
 		About the application permission model 
 		Consumer key 0i228jWPp6uS9z2pUpQR9g 
 		Consumer secret KVRtNcqqDzJDgIVGnz8yVjIiC1nsKnex8KRw8DeYyo8 
@@ -49,17 +45,12 @@ class WITMoodLight {
 		Authorize URL https://api.twitter.com/oauth/authorize 
 		Access token URL https://api.twitter.com/oauth/access_token 
 		Callback URL None 
-
 		Your access token
 		Use the access token string as your "oauth_token" and the access token secret as your "oauth_token_secret" to 
 		sign requests with your own Twitter account. Do not share your oauth_token_secret with anyone. 
-
 		Access token 587703594-2AH5spdoiDLsMFSPJLCEO1b2JdfyC4C2GJxKM9n7 
 		Access token secret MBwhvTEZ1Bl4l84hbW7RWi5OvD6zZ59uwe5O9pn3U 
 		Access level Read and write 
-
-
-
 	*/
 	
 		//Dictionary declarations
@@ -90,21 +81,21 @@ class WITMoodLight {
 			String myConsumerSecret = "RDOuPsXc1jM4jq3Pia3z2CjkJRgyoJMYUtzyTeK9jBiZWSkx7L";
 			String myAccessToken = "984102252150427648-0ntQTi82rLn9joNTYX6KiUmPjsRsQfP";
 			String myAccessSecret = "fapV4o9Yb88BmWyNqY5sHK3shvpD1R3RGB3BViaunyzmj";
-			System.out.println("Acct '" + myAccount + "'");
-			System.out.println("CKey '" + myConsumerKey + "'");
-			System.out.println("CSecret '" + myConsumerSecret + "'");
-			System.out.println("AToken '" + myAccessToken + "'");
-			System.out.println("ASecret '" + myAccessSecret + "'");
+			//System.out.println("Acct '" + myAccount + "'");
+			//System.out.println("CKey '" + myConsumerKey + "'");
+			//System.out.println("CSecret '" + myConsumerSecret + "'");
+			//System.out.println("AToken '" + myAccessToken + "'");
+			//System.out.println("ASecret '" + myAccessSecret + "'");
 			twitter.setOAuthConsumer(myConsumerKey, myConsumerSecret);
 			AccessToken accessToken = new AccessToken(myAccessToken, myAccessSecret);
 			twitter.setOAuthAccessToken(accessToken);
 			//pulls all tweets from user's home timeline 
 			//			Status status = twitter.updateStatus(message);
 			List<Status> statuses = twitter.getHomeTimeline();
-			System.out.println("Showing home time line.");
+			//System.out.println("Showing home time line.");
 			for (Status status : statuses) {
 				String statusText = status.getText();
-				System.out.println(status.getUser().getName() + ":" + statusText);
+			//	System.out.println(status.getUser().getName() + ":" + statusText);
 
 				String[] tweetArr = statusText.split(" "); //takes tweet and splits into array of words separated with a space
 				//these counts will help determine what mood a string represents
@@ -125,9 +116,9 @@ class WITMoodLight {
 					else if(tweetArr[i].contains(anger[2])) {
 						angerCount++;
 					}
-					else {
-						System.out.println("didn't contain anger");
-					}
+				//	else {
+				//		System.out.println("didn't contain anger");
+				//	}
 				};
 				
 				
@@ -142,9 +133,9 @@ class WITMoodLight {
 					else if(tweetArr[i].contains(happy[2])) {
 						happyCount++;
 					}
-					else {
-						System.out.println("didn't contain happy");
-					}
+					//else {
+						//System.out.println("didn't contain happy");
+					//}
 				};
 				
 				
@@ -159,9 +150,9 @@ class WITMoodLight {
 					else if(tweetArr[i].contains(love[2])) {
 						loveCount++;
 					}
-					else {
-						System.out.println("didn't contain love");
-					}
+					//else {
+					//	System.out.println("didn't contain love");
+					//}
 				};
 				
 				//checking input string for surprise keywords
@@ -175,9 +166,9 @@ class WITMoodLight {
 					else if(tweetArr[i].contains(surprise[2])) {
 						surpriseCount++;
 					}
-					else {
-						System.out.println("didn't contain surprise");
-					}
+					//else {
+					//	System.out.println("didn't contain surprise");
+					//}
 				};
 				
 				
@@ -192,9 +183,9 @@ class WITMoodLight {
 					else if(tweetArr[i].contains(sadness[2])) {
 						sadnessCount++;
 					}
-					else {
-						System.out.println("didn't contain sadness");
-					}
+					//else {
+					//	System.out.println("didn't contain sadness");
+					//}
 				};
 				
 				HashMap<String, Integer> emotions = new HashMap<String, Integer>();
@@ -219,27 +210,36 @@ class WITMoodLight {
 				}
 				
 				//TODO make array of emotions for faster searching
-				if (biggestKey == "angry"){
+				//anger red - 2
+				//happy green - 0
+				//love purple - 1
+				//surprise orange - 4
+				//sadness blue - 3
+							if (biggestKey == "angry"){
 					final_angerCount++;
-				} else if (biggestKey == "happy"){
+							} else if (biggestKey == "happy"){
 					final_happyCount++;
+					
 				} else if (biggestKey == "sadness"){
 					final_sadnessCount++;
+				
 				} else if (biggestKey == "love"){
 					final_loveCount++;
+					
 				} else if (biggestKey == "surprise"){
 					final_surpriseCount++;
+				
 				} else {
 					continue;
 				}
 			
-			}; 
+			};
 			
 			
 
 
 			HashMap<String, Integer> vars = new HashMap<String, Integer>();
-
+			String colorcode = "0";
 			// Inserting a variable
 			vars.put("anger", final_angerCount);
 			vars.put("happy", final_happyCount);
@@ -258,10 +258,28 @@ class WITMoodLight {
 					biggestKey = key;
 				}
 			};
+			if (biggestKey == "angry"){
+					colorcode = "2";
+				} else if (biggestKey == "happy"){
+					colorcode = "0";	
+				} else if (biggestKey == "sadness"){
+					colorcode = "3";
+				
+				} else if (biggestKey == "love"){
+					colorcode = "1";
+					
+				} else if (biggestKey == "surprise"){
+					colorcode = "4";
+				
+				}
 			
-			
-			System.out.println("Highest emotion is " + biggestKey);
-			System.exit(0);
+				
+				
+				
+				
+				
+			System.out.print(colorcode);
+						System.exit(0);
 
 		} catch (Exception e) {
 			System.err.println("ERROR: " + e.getMessage());
