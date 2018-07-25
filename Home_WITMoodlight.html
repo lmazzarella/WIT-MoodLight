@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<head>
+
+	<html lang="en">
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+
+	<script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<link rel="stylesheet" href="bootEx.css">
+
+</head>
+
+<html>
+
+		<body>
+
+    
+
+
+
+				<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+
+				  <a class="navbar-brand" href="Home_WITMoodlight.html">WIT Moodlight</a>
+
+				  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+				  </div>
+
+				</nav><div class="container-fluid">
+
+				  <div class="row">
+
+					<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+
+					  <ul class="nav nav-pills flex-column">
+
+						<li class="nav-item">
+
+						  <a class="nav-link active" href="#">Home <span  c="sr-only"></span></a>
+
+						</li>
+
+					  </ul>
+
+			
+
+					  <ul class="nav nav-pills flex-column">
+
+						<li class="nav-item">
+
+						  <a class="nav-link" href="EmailPrompts_WITMoodlight.html">Email Prompts</a>
+
+						</li>
+
+
+					  </ul>
+
+			
+					  <ul class="nav nav-pills flex-column">
+
+							<li class="nav-item">
+	
+								<a class="nav-link" href="#">Dictionary</a>
+	
+							</li>
+	
+							</ul>
+
+
+					  <ul class="nav nav-pills flex-column">
+
+						<li class="nav-item">
+
+						  <a class="nav-link" href="#">About Us</a>
+
+						</li>
+
+					  </ul>
+
+					</nav>
+
+			
+
+					<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+
+					  <h1>WIT Moodlight</h1>
+
+					<!-- This is where we will want the scipts to be linked. You will have to save the scripts seperatly though (One for the chart and one for the button) -->
+
+					  <section class="row text-center placeholders">
+
+						<div class="col">
+
+							<h4>This is the Button to Begin WIT Moodlight</h4>
+
+							<p>		<br>	</p>
+							
+							<button type="button" onclick="sortMood();">Click Me!</button>
+
+							<p>		<br>	</p>
+
+						  <div class="text-muted">By pressing the button above, we well fetch data from twitter to find the overall mood of the WIT community</div>
+
+						</div>
+
+						<div class="col">
+
+							<h4>Word Count Distribution</h4>
+
+							<div id="piechart"></div>
+							
+							<script type="text/javascript">
+								// Load google charts
+								google.charts.load('current', {'packages':['corechart']});
+								google.charts.setOnLoadCallback(drawChart);
+								
+								// Draw the chart and set the chart values
+								function drawChart() {
+									var data = google.visualization.arrayToDataTable([
+									['Mood', 'Word Count'],
+									['Anger', angerCount],
+									['Happy', happyCount],
+									['Love', loveCount],
+									['Surprise', surpriseCount],
+									['Sadness', sadnessCount]
+								]);
+								
+									// Optional; add a title and set the width and height of the chart
+									var options = {'width':550, 'height':400};
+								
+									// Display the chart inside the <div> element with id="piechart"
+									var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+									chart.draw(data, options);
+								}
+								</script>
+
+						  <span class="text-muted"></span>
+
+						</div>
+
+					  </section>
+
+			
+
+					  <h2>Detailed Statitics of Accounts and Word Count</h2>
+
+					  <div class="table-responsive">
+
+						<table class="table table-striped">
+
+						  <thead>
+
+							<tr>
+
+							  <th>Twitter Account</th>
+
+							  <th>Anger Word Count</th>
+
+							  <th>Happy Word Count</th>
+
+							  <th>Love Word Count</th>
+
+								<th>Surprise Word Count</th>
+								
+								<th>Sadness Word Count</th>
+
+							</tr>
+
+						  </thead>
+
+						  <tbody>
+
+							<tr>
+
+							  <td>@JohnSmi76455275</td>
+
+							  <td>2</td>
+
+							  <td>0</td>
+
+							  <td>0</td>
+
+								<td>0</td>
+								
+								<td>0</td>
+
+							</tr>
+
+							<tr>
+
+							  <td>@lsimpson1928</td>
+
+							  <td>0</td>
+
+							  <td>2</td>
+
+							  <td>0</td>
+
+								<td>0</td>
+								
+								<td>0</td>
+
+							</tr>
+
+							<tr>
+
+							  <td>@pjpj100019</td>
+
+							  <td>0</td>
+
+							  <td>1</td>
+
+							  <td>0</td>
+
+								<td>2</td>
+								
+								<td>0</td>
+
+							</tr>
+
+
+
+						
+
+						  </tbody>
+
+						</table>
+
+					  </div>
+
+					</main>
+
+				  </div>
+
+				</div>
+
+			
+
+				<!-- Bootstrap core JavaScript
+
+				================================================== -->
+
+				<!-- Placed at the end of the document so the pages load faster -->
+
+				<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+				<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+				<script src="../../dist/js/bootstrap.min.js"></script>
+
+				<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+				<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+					<!--case sensitive and containing other words  negate everything with not-->
+
+
+
+
+
+
+
+
+					<script>
+	
+
+							//MAKING GLOBAL
+							//these counts will help determine what mood a string represents
+							var angerCount = 0;
+									var happyCount = 0;
+									var loveCount = 0;
+									var surpriseCount = 0;
+									var sadnessCount = 0;
+							
+							//Dictionary declarations
+							var anger = ["anger", "mad", "disgusted", "angry", "upset", "annoyed", "irritated", "pissed", "frustrated"];
+									var happy = ["happy", "joyful", "delighted", "ecstatic", "thrilled", "glad", "elated", "pleased", "cheerful", "gleeful"];
+									var love = ["love", "endearing", "heartfelt", "passionate", "infatuated", "affection", "friendship", "infatuation", "passion"];
+									var surprise = ["surprise", "wow", "shocked", "amazing", "amazed", "astonished", "awe", "jolted", "astounded", "abrupt"];
+									var sadness = ["sadness", "unhappy", "depressed", "hopeless", "heartbroken", "miserable", "grief", "mourning", "sorrow", "bleak", "sad"];	
+								
+							var finalMood = "null"; //assigning a final mood string			
+							
+							
+							function sortMood() {
+									var tweet = prompt("Please enter your tweet", " ");
+									if (tweet != null) {
+								
+									var tweetArr = tweet.split(" ");
+								
+									
+								
+									//checking input string for anger keywords
+									for(i = 0; i < tweetArr.length; i++) {
+										if(tweetArr[i].includes(anger[0])) {
+											angerCount++;
+										}
+										else if(tweetArr[i].includes(anger[1])) {
+											angerCount++;
+										}
+										else if(tweetArr[i].includes(anger[2])) {
+											angerCount++;				
+										}
+										else if(tweetArr[i].includes(anger[3])) {
+											angerCount++;
+										}
+										else if(tweetArr[i].includes(anger[4])) {
+											angerCount++;				
+										}
+										else if(tweetArr[i].includes(anger[5])) {
+											angerCount++;
+										}
+										else if(tweetArr[i].includes(anger[6])) {
+											angerCount++;			
+										}
+										else if(tweetArr[i].includes(anger[7])) {
+											angerCount++;
+										}
+										else if(tweetArr[i].includes(anger[8])) {
+											angerCount++;		
+										}
+										else if(tweetArr[i].includes(anger[9])) {
+											angerCount++;
+										}
+										else {
+											
+										}
+									};
+									
+									//checking input string for happy keywords
+									for(i = 0; i < tweetArr.length; i++) {
+										if(tweetArr[i].includes(happy[0])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[1])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[2])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[3])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[4])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[5])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[6])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[7])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[8])) {
+											happyCount++;
+										}
+										else if(tweetArr[i].includes(happy[9])) {
+											happyCount++;
+										}
+										else {
+											
+										}
+									};
+									
+									
+									//checking input string for love keywords
+									for(i = 0; i < tweetArr.length; i++) {
+										if(tweetArr[i].includes(love[0])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[1])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[2])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[3])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[4])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[5])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[6])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[7])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[8])) {
+											loveCount++;
+										}
+										else if(tweetArr[i].includes(love[9])) {
+											loveCount++;
+										}
+										else {
+											
+										}
+									};
+									
+									
+									//checking input string for surprise keywords
+									for(i = 0; i < tweetArr.length; i++) {
+										if(tweetArr[i].includes(surprise[0])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[1])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[2])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[3])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[4])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[5])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[6])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[7])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[8])) {
+											surpriseCount++;
+										}
+										else if(tweetArr[i].includes(surprise[9])) {
+											surpriseCount++;
+										}
+										else {
+											
+										}
+									};
+									
+									
+									//checking input string for sadness keywords
+									for(i = 0; i < tweetArr.length; i++) {
+										if(tweetArr[i].includes(sadness[0])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[1])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[2])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[3])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[4])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[5])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[6])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[7])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[8])) {
+											sadnessCount++;
+										}
+										else if(tweetArr[i].includes(sadness[9])) {
+											sadnessCount++;
+										}
+										else {
+											
+										}
+									};
+									
+									//if anger is the highest count, the final mood of the tweet is anger
+									if(angerCount > happyCount && angerCount > loveCount  && angerCount > surpriseCount && angerCount > sadnessCount) {
+										finalMood = "anger";
+									}
+									//if happy is the highest count, the final mood of the tweet is happy
+									else if (happyCount > angerCount && happyCount > loveCount  && happyCount > surpriseCount && happyCount > sadnessCount) {
+										finalMood = "happy";
+									}
+									//if love is the highest count, the final mood of the tweet is love
+									else if (loveCount > angerCount && loveCount > happyCount && loveCount > surpriseCount && loveCount > sadnessCount) {
+										finalMood = "love";
+									}
+									//if surprise is the highest count, the final mood of the tweet is surprise
+									else if (surpriseCount > angerCount && surpriseCount > happyCount && surpriseCount > loveCount && surpriseCount > sadnessCount) {
+										finalMood = "surprise";
+									}
+									//if sadness is the highest count, the final mood of the tweet is sadness
+									else if (sadnessCount > angerCount && sadnessCount > happyCount && sadnessCount > loveCount && sadnessCount > surpriseCount) {
+										finalMood = "sadness";
+									}
+									//if there's a tie anywhere
+									else {
+										finalMood = "ambiguous";	}
+									
+
+									drawChart();
+									
+									var myMsg = document.getElementById("myMsg");
+									myMsg.innerHTML = "angerCount = " + angerCount;
+							
+									/*
+									document.write("The anger count is: " + angerCount + "<br>");
+									document.write("The happy count is: " + happyCount + "<br>");
+									document.write("The love count is: " + loveCount + "<br>");
+									document.write("The suprise count is: " + surpriseCount + "<br>");
+									document.write("The sadness count is: " + sadnessCount + "<br>");
+							
+									document.write("The final mood is: " + finalMood + "<br>");
+									*/
+								}
+							};
+							
+							</script>
+
+		</body>
+
+</html>
+
