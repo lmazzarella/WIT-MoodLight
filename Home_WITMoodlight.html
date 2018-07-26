@@ -117,7 +117,7 @@
 
 							<p>		<br>	</p>
 
-						  <div class="text-muted">By pressing the button above, we well fetch data from twitter to find the overall mood of the WIT community</div>
+						  <div class="text-muted">By pressing the button above, we well fetch data from twitter to find the overall mood of the WIT community. Once our fucntions finishing running, a helpful pie chart will appear on the right showing the total dispertion of mood-oriented words tweeted by the Wentworth Community</div>
 
 						</div>
 
@@ -144,7 +144,11 @@
 								]);
 								
 									// Optional; add a title and set the width and height of the chart
-									var options = {'width':550, 'height':400};
+									var options = {
+										width:550,
+										height:400,
+										colors: ['#FE1717', '#17FE49', '#D317FE', '#FE9D17', '#172BFE']
+										};
 								
 									// Display the chart inside the <div> element with id="piechart"
 									var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -286,7 +290,7 @@
 
 							//MAKING GLOBAL
 							//these counts will help determine what mood a string represents
-							var angerCount = 0;
+									var angerCount = 0;
 									var happyCount = 0;
 									var loveCount = 0;
 									var surpriseCount = 0;
